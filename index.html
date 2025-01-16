@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konitos - Helados Suaves</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B2B;
+            --primary-light: #FF8B53;
+            --accent: #FF4D4D;
+            --text-dark: #2C3E50;
+            --text-light: #FFFFFF;
+            --background-light: #FFF9F5;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .hero {
+            background: var(--primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-image {
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            padding: 100px 20px;
+            background: var(--background-light);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255,107,43,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .stats-section {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: var(--background-light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .machine-showcase {
+            padding: 100px 20px;
+            background: var(--background-light);
+            text-align: center;
+        }
+
+        .machine-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .machine-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,77,77,0.4);
+        }
+
+        section h2 {
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo {
+                max-width: 300px;
+            }
+            .features-grid {
+                gap: 20px;
+            }
+            .machine-images {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <img src="images/logo.png" alt="Logo Konitos" class="hero-logo">
+        <p>¡Descubre la magia de nuestros helados suaves! Servidos en vaso o cono con una explosión de toppings deliciosos</p>
+        <img src="images/logo.png" alt="Logo Konitos" class="hero-logo">
+        <a href="#contact" class="button">¡Quiero un Konitos!</a>
+    </section>
+
+    <section class="stats-section">
+        <h2>¡Impulsa tu Negocio con Konitos! 🍦</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">25%</div>
+                <h3>Aumento en Tráfico</h3>
+                <p>Más visitantes en tu establecimiento</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30-40%</div>
+                <h3>Ventas Cruzadas</h3>
+                <p>Incremento en ventas de otros productos</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20%</div>
+                <h3>Más Tiempo de Visita</h3>
+                <p>Los clientes permanecen más en tu local</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="machine-showcase">
+        <h2>Nuestra Máquina Única</h2>
+        <div class="machine-images">
+	    <img src="images/kiosko.verde.jpg" alt="Máquina Konitos vista lateral" class="machine-image">
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>La Experiencia Konitos</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="images/helado.vaso.jpg" alt="Helado Konitos" class="hero-image">
+                <h3>Calidad Premium</h3>
+                <p>Helados suaves cremosos y perfectos, elaborados con los mejores ingredientes</p>
+            </div>
+            <div class="feature-card">
+                <img src="images/kiosko.jpg" alt="Máquina Konitos vista frontal" class="machine-image">
+                <h3>Diseño Compacto</h3>
+                <p>Solo 2m² de espacio necesario para una máquina que atrae todas las miradas</p>
+            </div>
+            <div class="feature-card">
+                <img src="images/beneficios.konitos.jpg" alt="Clientes Felices" class="hero-image">
+                <h3>Clientes Satisfechos</h3>
+                <p>Una experiencia única que trae sonrisas y genera clientes frecuentes</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h2>¡Únete a la Familia Konitos!</h2>
+            <p>Transforma tu espacio en un destino de felicidad y sabor</p>
+            <p>📱 Teléfono: <a href="tel:5538912514">55 3891 2514</a></p>
+            <p>📧 Email: <a href="mailto:abregodiana@hotmail.com">abregodiana@hotmail.com</a></p>
+            <p>👋 Contacta con Diana Abrego Rodríguez</p>
+            <a href="#contact" class="button">Solicita tu Konitos hoy</a>
+        </div>
+    </section>
+</body>
+</html>
