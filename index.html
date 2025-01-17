@@ -15,7 +15,8 @@
         :root {
             --primary: #FF6B2B;
             --primary-light: #FF8B53;
-            --accent: #FF4D4D;
+            --secondary: #4A90E2;
+            --accent: #FFC107;
             --text-dark: #2C3E50;
             --text-light: #FFFFFF;
             --background-light: #FFF9F5;
@@ -27,28 +28,61 @@
         }
 
         .hero {
-            background: var(--primary);
+            background: linear-gradient(rgba(255,107,43,0.9), rgba(255,139,83,0.9)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
             color: var(--text-light);
             text-align: center;
-            padding: 80px 20px;
+            padding: 140px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/100/100') repeat;
+            opacity: 0.1;
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             position: relative;
         }
 
-        .hero-logo {
-            max-width: 400px;
-            margin: 0 auto 2rem;
-        }
-
-        .hero-image {
-            max-width: 800px;
-            margin: 2rem auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .features {
             padding: 100px 20px;
             background: var(--background-light);
+            position: relative;
+        }
+
+        .features::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(transparent, white);
         }
 
         .features-grid {
@@ -66,24 +100,47 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(255,107,43,0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255,107,43,0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
+            width: 100px;
+            height: 100px;
             margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.1);
         }
 
         .stats-section {
             padding: 100px 20px;
             background: white;
+            position: relative;
         }
 
         .stats-grid {
@@ -102,6 +159,10 @@
             transition: transform 0.3s ease;
         }
 
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
         .stat-number {
             font-size: 2.5rem;
             color: var(--primary);
@@ -109,24 +170,32 @@
             margin-bottom: 10px;
         }
 
-        .machine-showcase {
-            padding: 100px 20px;
-            background: var(--background-light);
+        .success-story {
+            background: var(--primary);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
             text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .machine-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+        .requirements {
+            padding: 100px 20px;
+            background: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .requirements-content {
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .machine-image {
-            width: 100%;
+            background: var(--background-light);
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .contact {
@@ -134,6 +203,18 @@
             color: var(--text-light);
             padding: 80px 20px;
             text-align: center;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
         }
 
         .contact-info {
@@ -149,7 +230,7 @@
             display: inline-block;
             padding: 15px 40px;
             background: var(--accent);
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             border-radius: 50px;
             margin-top: 30px;
@@ -157,11 +238,13 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255,193,7,0.3);
         }
 
         .button:hover {
+            background: #FFD54F;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,77,77,0.4);
+            box-shadow: 0 8px 25px rgba(255,193,7,0.4);
         }
 
         section h2 {
@@ -173,85 +256,164 @@
             padding-bottom: 20px;
         }
 
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .requirements ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .requirements li {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .requirements li:hover {
+            transform: translateX(10px);
+        }
+
+        .contact a {
+            color: var(--text-light);
+            text-decoration: none;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact a:hover {
+            border-color: var(--text-light);
+        }
+
         @media (max-width: 768px) {
-            .hero-logo {
-                max-width: 300px;
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
             }
             .features-grid {
                 gap: 20px;
             }
-            .machine-images {
-                gap: 20px;
+            .feature-card {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
     <section class="hero">
-        <img src="./imagenes/logo.png" alt="Logo Konitos" class="hero-logo">
+        <h1>KONITOS</h1>
         <p>¡Descubre la magia de nuestros helados suaves! Servidos en vaso o cono con una explosión de toppings deliciosos</p>
-        <img src="./imagenes/logo.png" alt="Logo Konitos" class="hero-logo">
         <a href="#contact" class="button">¡Quiero un Konitos!</a>
-    </section>
-
-    <section class="stats-section">
-        <h2>¡Impulsa tu Negocio con Konitos! 🍦</h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">25%</div>
-                <h3>Aumento en Tráfico</h3>
-                <p>Más visitantes en tu establecimiento</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">30-40%</div>
-                <h3>Ventas Cruzadas</h3>
-                <p>Incremento en ventas de otros productos</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">20%</div>
-                <h3>Más Tiempo de Visita</h3>
-                <p>Los clientes permanecen más en tu local</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="machine-showcase">
-        <h2>Nuestra Máquina Única</h2>
-        <div class="machine-images">
-	    <img src="./imagenes/kiosko.verde.jpg" alt="Máquina Konitos vista lateral" class="machine-image">
-        </div>
     </section>
 
     <section class="features">
         <h2>La Experiencia Konitos</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <img src="./imagenes/helado.vaso.jpg" alt="Helado Konitos" class="hero-image">
-                <h3>Calidad Premium</h3>
-                <p>Helados suaves cremosos y perfectos, elaborados con los mejores ingredientes</p>
+                 <img src="./imagenes/kiosko.verde.jpg" alt="Máquina Konitos vista lateral" class="machine-image">
+                <h3>Calidad Excepcional</h3>
+                <p>Helados suaves cremosos y perfectos, elaborados con los mejores ingredientes y una selección premium de toppings para crear momentos inolvidables</p>
             </div>
             <div class="feature-card">
                 <img src="./imagenes/kiosko.jpg" alt="Máquina Konitos vista frontal" class="machine-image">
-                <h3>Diseño Compacto</h3>
-                <p>Solo 2m² de espacio necesario para una máquina que atrae todas las miradas</p>
+                <h3>Diseño Inteligente</h3>
+                <p>Nuestro moderno kiosco ocupa solo 2m², maximizando la rentabilidad por espacio y agregando un toque de elegancia a tu centro comercial</p>
             </div>
             <div class="feature-card">
                 <img src="./imagenes/beneficios.konitos.jpg" alt="Clientes Felices" class="hero-image">
-                <h3>Clientes Satisfechos</h3>
-                <p>Una experiencia única que trae sonrisas y genera clientes frecuentes</p>
+                <h3>Atracción Garantizada</h3>
+                <p>Un imán para familias y jóvenes, aumentando el tráfico de clientes y creando una experiencia única que los hará volver por más</p>
             </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <h2>¡Un puesto de helados puede transformar tu comercio! 🍦</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">+25%</div>
+                <h3>Más Tráfico Peatonal</h3>
+                <p>Un puesto de helados bien ubicado atrae tanto a clientes planeados como espontáneos</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">40%</div>
+                <h3>Ventas Cruzadas</h3>
+                <p>De los compradores impulsivos adquieren algo más en el comercio principal</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">+60%</div>
+                <h3>Aumento en Ventas</h3>
+                <p>Durante los meses cálidos, las ventas se disparan significativamente</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">70%</div>
+                <h3>Decisiones Emocionales</h3>
+                <p>De las compras de helados son decisiones impulsivas y emocionales</p>
+            </div>
+        </div>
+        <div class="success-story">
+            <h3>Casos de Éxito Comprobados ⭐</h3>
+            <p>Centros comerciales han logrado un 20% más de tráfico, y en eventos locales, los puestos de helados son siempre los más visitados.</p>
+        </div>
+        <div class="success-story">
+            <h3>🎯 Más gente, más oportunidades:</h3>
+            <p>Un puesto de helados bien ubicado puede aumentar el tráfico peatonal hasta un 25%, atrayendo tanto a clientes planeados como espontáneos. Es un imán visual que no pasa desapercibido.</p> 
+        </div>
+        <div class="success-story">        
+            <h3>🛒 Ventas cruzadas garantizadas:</h3>
+            <p>¡No solo vendes helados! El 40% de los compradores impulsivos suelen adquirir algo más en el comercio principal. Es la fórmula perfecta para atraer y retener clientes.</p>
+        </div>
+        <div class="success-story">
+            <h3>🌞 El clima está de tu lado:</h3>
+            <p> Durante los meses cálidos, las ventas de helados pueden subir hasta un 60%, convirtiéndose en un éxito asegurado. Además, los helados generan felicidad, mejorando la experiencia del cliente.</p>
+        </div>
+        <div class="success-story">
+            <h3>👨‍👩‍👧 Atracción para toda la familia:</h3>
+            <p>¿Buscas atraer a familias y niños? Los helados son irresistibles para este público</p>
+        </div>
+        <div class="success-story">
+            <h3>⏳ Más tiempo, más compras:</h3>
+            <p>¡Los clientes que disfrutan de un helado suelen quedarse más tiempo y comprar más! Aumentando la posibilidad de explorar y comprar más en tu negocio</p>
+        </div>
+    </section>
+
+    <section class="requirements">
+        <div class="requirements-content">
+            <h2>Instalación Sin Complicaciones</h2>
+            <p>Nos adaptamos a tu espacio con requisitos mínimos:</p>
+            <ul>
+                <li>✨ Solo 2m² de espacio</li>
+                <li>⚡ Un punto de conexión eléctrica</li>
+                <li>🛠️ Sin obras ni modificaciones complejas</li>
+            </ul>
+            <p>Nosotros nos encargamos de todo: mantenimiento, limpieza y cumplimiento de normativas de seguridad</p>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <div class="contact-info">
-            <h2>¡Únete a la Familia Konitos!</h2>
+            <h2>¡Haz Parte de la Familia Konitos!</h2>
             <p>Transforma tu espacio en un destino de felicidad y sabor</p>
             <p>📱 Teléfono: <a href="tel:5538912514">55 3891 2514</a></p>
-            <p>📧 Email: <a href="mailto:abregodiana@hotmail.com">abregodiana@hotmail.com</a></p>
-            <p>👋 Contacta con Diana Abrego Rodríguez</p>
+            <p>📧 Email: <a href="mailto:konitos.contacto@gmail.com">konitos.contacto@gmail.com</a></p>
+            <p>👋 Contacta con uno de nuestros asesores</p>
             <a href="#contact" class="button">Solicita tu Konitos hoy</a>
         </div>
     </section>
 </body>
 </html>
+
